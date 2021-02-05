@@ -4,10 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
 	const outputIntro = document.querySelector("#output-name-intro");
 	const output = document.querySelector("#output-text-name");
 	const loadingContainer = document.querySelector("#loading-container");
-    const innerLoadingBar = document.querySelector("#inner-loading-bar");
-    const twitterLink = document.querySelector("#twitter-link");
-    
-    let generatingName = false;
+	const innerLoadingBar = document.querySelector("#inner-loading-bar");
+	const twitterLink = document.querySelector("#twitter-link");
+
+	let generatingName = false;
 
     const firstNames = [
         "Crash","Shrim","Aqua","Goldenrod","Luddington","Camel","Figaro","Honest","Fripp","Tilson",
@@ -37,48 +37,48 @@ document.addEventListener("DOMContentLoaded", function () {
         "oil","present","salve","pound","elbow","joint","crease","flank","bone","chill","frog","droop","service","fest","jester","gear",
         "yellow","flint","helix","chisel","wrinkle","ripple","crest","holler","hodgepodge","briar","wink"
     ];
-    
+
 	form.addEventListener("submit", handleSubmit);
 
 	function handleSubmit(e) {
-        e.preventDefault();
+		e.preventDefault();
 
-        if (generatingName || !input.value.trim().length) {
-            return;
-        }
+		if (generatingName || !input.value.trim().length) {
+			return;
+		}
 
 		form.reset();
-        input.blur();
-        
-        // don't allow submit while already generating
-        generatingName = true;
+		input.blur();
 
-        // remove existing generated name, show loading bar
-        loadingContainer.classList.remove("hidden");
-        outputIntro.classList.add("hidden");
-        twitterLink.classList.add("hidden");
-        output.innerHTML = "";
+		// don't allow submit while already generating
+		generatingName = true;
 
-        window.setTimeout(() => innerLoadingBar.classList.add("loading"), 10);
-        
-        const name = createRandomName();
-        // wait for loading transition, show name and remove loading bar
-        window.setTimeout(() => {
-            output.innerHTML = name;
-            twitterLink.setAttribute("href", getTwitterLink(name));
-            loadingContainer.classList.add("hidden");
-            outputIntro.classList.remove("hidden");
-            twitterLink.classList.remove("hidden");
-            innerLoadingBar.classList.remove("loading");
-            generatingName = false;
-        }, 4000);
+		// remove existing generated name, show loading bar
+		loadingContainer.classList.remove("hidden");
+		outputIntro.classList.add("hidden");
+		twitterLink.classList.add("hidden");
+		output.innerHTML = "";
+
+		window.setTimeout(() => innerLoadingBar.classList.add("loading"), 10);
+
+		const name = createRandomName();
+		// wait for loading transition, show name and remove loading bar
+		window.setTimeout(() => {
+			output.innerHTML = name;
+			twitterLink.setAttribute("href", getTwitterLink(name));
+			loadingContainer.classList.add("hidden");
+			outputIntro.classList.remove("hidden");
+			twitterLink.classList.remove("hidden");
+			innerLoadingBar.classList.remove("loading");
+			generatingName = false;
+		}, 4000);
 	}
 
 	function createRandomName() {
-        // pick random first name
+		// pick random first name
 		const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
 
-        // pick 2 random, distinct last name indices, concatenate the corresponding names
+		// pick 2 random, distinct last name indices, concatenate the corresponding names
 		const lastNameIdx1 = Math.floor(Math.random() * lastNames.length);
 		const lastNameIdx2 = (lastNameIdx1 + (Math.floor(Math.random() * (lastNames.length - 1)) + 1)) % lastNames.length;
 		const lastName1 = lastNames[lastNameIdx1];
@@ -86,10 +86,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		const lastName = lastName1.charAt(0).toUpperCase() + lastName1.slice(1) + lastName2;
 		return `${firstName} ${lastName}`;
-    }
-    
-    function getTwitterLink(name) {
-        const message = window.encodeURI(`My CBLR trailname is ${name}! Get yours at ${window.location.origin}`);
-        return `https://twitter.com/intent/tweet?text=${message}`;
-    }
+	}
+
+	function getTwitterLink(name) {
+		const message = window.encodeURI(
+			`My CBLR trailname is ${name}! Get yours at ${window.location.origin}`
+		);
+		return `https://twitter.com/intent/tweet?text=${message}`;
+	}
 });
