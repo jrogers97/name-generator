@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta name="description" content="Generate your CBLR trailname">
+        <script src="script.js"></script>
+        <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <meta name="theme-color" content="#ffffff">
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="styles.css" />
+		<title>CBLR Trailname Generator</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="unit-container">
+				<div class="inner-unit-container">
+					<h1>Welcome to CBLR!</h1>
+					<h3>We’re thrilled to have you on board.</h3>
+					<h3>First, you’ll need to create your custom cabling
+						trailname, for easy identification by your fellow
+						cablers and the team at CBLR HQ.</h3>
+					<h3>Simply type your name here, and we’ll generate one for you!</h3>
+					<form id="form" autocomplete="off" class="form">
+						<input id="input" type="text" class="input" placeholder="Enter your name" />
+						<button class="submit-btn" id="submit" type="submit">
+							Get trailname
+						</button>
+					</form>
+					<div class="output-container">
+						<div class="loading-container hidden" id="loading-container">
+							<div class="loading-text">Generating name...</div>
+							<div class="loading-bar">
+								<div class="inner-loading-bar" id="inner-loading-bar"></div>
+							</div>
+						</div>
+						<div id="output-text" class="output-text">
+                            <span class="output-name-intro hidden" id="output-name-intro">Welcome,</span>
+                            <span class="output-name" id="output-text-name"></span>
+                        </div>
+                        <a href="#" id="twitter-link" target="_blank" class="twitter-link hidden">
+                            <div class="twitter-container">
+                                <img src="icons/twitter.png" alt="Twitter" class="twitter-logo">
+                                <span>Share</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="footer">
+                        <a href="https://www.lapsisfilm.com/" target="_blank" class="gif-link">
+                            <img src="images/lapsis.gif" class="gif" alt="Lapsis Film">
+                        </a>
+                        <a href="https://www.cblr.international/" target="_blank">
+                            <img src="images/logo.png" class="logo" alt="CBLR">
+                        </a>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
