@@ -89,9 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function getTwitterLink(name) {
-		const message = window.encodeURI(
-			`My CBLR trailname is ${name}! Get yours at ${window.location.origin}`
-		);
+		const message = window.encodeURI(`My CBLR trailname is ${name}! Get yours at ${window.location.origin}`);
 		return `https://twitter.com/intent/tweet?text=${message}`;
 	}
 });
